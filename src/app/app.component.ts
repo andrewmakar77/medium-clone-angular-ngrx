@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'mc-root',
+  template: `
+    <div>Starter</div>
+    <router-outlet></router-outlet>
+  `,
 })
-export class AppComponent {
-  title = 'angular-ngrx';
-}
+export class AppComponent {}
