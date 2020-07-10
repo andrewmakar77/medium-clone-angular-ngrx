@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'mc-root',
@@ -6,6 +6,5 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     <div>Starter</div>
     <router-outlet></router-outlet>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {}
