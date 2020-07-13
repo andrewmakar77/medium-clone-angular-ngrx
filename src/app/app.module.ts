@@ -5,8 +5,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from 'src/app/app.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { MaterialModule } from 'src/app/material/material.module';
-import { TranslationModule } from './translation/translation.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { TranslationModule } from 'src/app/modules/translation/translation.module';
+import { CoreModule } from 'src/app/modules/core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { TranslationModule } from './translation/translation.module';
     HttpClientModule,
     MaterialModule,
     TranslationModule,
+    CoreModule,
   ],
   bootstrap: [AppComponent],
 })
