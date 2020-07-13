@@ -6,7 +6,8 @@ import { ROUTES } from 'src/app/constants';
 const routes: Routes = [
   {
     path: `${ROUTES.AUTH}`,
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 
