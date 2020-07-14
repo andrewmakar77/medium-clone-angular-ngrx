@@ -1,13 +1,11 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { ROUTES } from 'src/app/constants';
-import {
-  EMAIL_VALIDATORS,
-  USERNAME_VALIDATORS,
-  PASSWORD_VALIDATORS,
-} from 'src/app/validators';
-import { ValidationService } from 'src/app/modules/core/services/validation.service';
+import * as fromValidators from 'src/app/validators';
+import { ValidationService } from 'src/app/modules/shared/services/validation.service';
+import { AuthFacade } from 'src/app/modules/auth/store/auth.facade';
+import { ERoutes, IRegisterRequestData, IUserResponse } from 'src/app/models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'mc-register',
@@ -16,13 +14,11 @@ import { ValidationService } from 'src/app/modules/core/services/validation.serv
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
-  public link = `/${ROUTES.AUTH}/${ROUTES.LOGIN}`;
+  public link = `/${ERoutes.AUTH}/${ERoutes.LOGIN}`;
   public form: FormGroup;
+  public user$: Observable<IUserResponse> = this.authFacade.user$;
 
-  constructor(
-    private fb: FormBuilder,
-    public validationService: ValidationService
-  ) {}
+  constructor(private fb: FormBuilder, public validationService: ValidationService, private authFacade: AuthFacade) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -30,13 +26,15 @@ export class RegisterComponent implements OnInit {
 
   private initForm(): void {
     this.form = this.fb.group({
-      username: ['', USERNAME_VALIDATORS],
-      email: ['', EMAIL_VALIDATORS],
-      password: ['', PASSWORD_VALIDATORS],
+      username: ['', fromValidators.USERNAME_VALIDATORS],
+      email: ['', fromValidators.EMAIL_VALIDATORS],
+      password: ['', fromValidators.PASSWORD_VALIDATORS],
     });
   }
 
   public onSubmit(): void {
-    console.log(this.form.value);
+    const requestData: IRegisterRequestData = { user: this.form.value };
+
+    this.authFacade.register(requestData);
   }
 }

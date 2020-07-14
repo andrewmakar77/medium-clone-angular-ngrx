@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from 'src/app/modules/auth/components/register/register.component';
-import { ROUTES } from 'src/app/constants';
+import { ERoutes } from 'src/app/models';
 
 const routes: Routes = [
-  { path: '', redirectTo: `${ROUTES.REGISTER}` },
-  { path: `${ROUTES.REGISTER}`, component: RegisterComponent },
-  { path: `${ROUTES.LOGIN}`, component: RegisterComponent },
+  { path: '', redirectTo: `${ERoutes.REGISTER}` },
+  { path: `${ERoutes.REGISTER}`, component: RegisterComponent },
+  { path: `${ERoutes.LOGIN}`, component: RegisterComponent },
 ];
 
 @NgModule({

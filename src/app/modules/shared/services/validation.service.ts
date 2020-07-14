@@ -15,19 +15,14 @@ export class ValidationService {
       } = [];
   private controlName: string;
 
-  constructor(
-    private titleCasePipe: TitleCasePipe,
-    private translateService: TranslateService
-  ) {}
+  constructor(private titleCasePipe: TitleCasePipe, private translateService: TranslateService) {}
 
   private setControls(control: AbstractControl): void {
     this.controls = control.parent.controls;
   }
 
   private setControlName(control: AbstractControl): void {
-    this.controlName = Object.keys(this.controls).find(
-      (name) => control === this.controls[name]
-    );
+    this.controlName = Object.keys(this.controls).find((name) => control === this.controls[name]);
 
     this.capitalizeControlName();
   }

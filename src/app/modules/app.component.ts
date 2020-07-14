@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'mc-root',
   template: `
-    <div>{{ 'HOME.STARTER' | translate }}</div>
+    <div routerLink="/">{{ 'HOME.STARTER' | translate }}</div>
     <router-outlet></router-outlet>
   `,
 })
