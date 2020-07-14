@@ -9,11 +9,7 @@
     <form class="card-form" [formGroup]="form">
       <mat-form-field>
         <mat-label>{{ 'AUTH.REGISTER.FORM.USERNAME' | translate }}</mat-label>
-        <input
-          matInput
-          placeholder="{{ 'AUTH.REGISTER.FORM.USERNAME' | translate }}"
-          formControlName="username"
-        />
+        <input matInput placeholder="{{ 'AUTH.REGISTER.FORM.USERNAME' | translate }}" formControlName="username" />
         <mat-error *ngIf="form.get('username').invalid">
           {{ validationService.getErrorMessage(form.get('username')) }}
         </mat-error>
@@ -45,13 +41,10 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="form.invalid"
-      (click)="onSubmit()"
-    >
+    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">
       {{ 'AUTH.REGISTER.BUTTON' | translate }}
     </button>
   </mat-card-actions>
 </mat-card>
+
+<pre>{{ user$ | async | json }}</pre>

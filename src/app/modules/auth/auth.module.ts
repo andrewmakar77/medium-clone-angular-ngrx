@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthStoreModule } from 'src/app/modules/auth/store/auth-store.module';
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
+    AuthStoreModule,
   ],
 })
 export class AuthModule {}
