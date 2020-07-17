@@ -1,0 +1,7 @@
+<div *ngIf="isError">
+  <mat-error
+    *ngFor="let error of backendErrorsService.errors; trackBy: trackByError"
+  >
+    {{ error }}
+  </mat-error>
+</div>
