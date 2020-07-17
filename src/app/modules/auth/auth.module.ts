@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthStoreModule } from 'src/app/modules/auth/store/auth-store.module';
+import { BackendErrorsModule } from 'src/app/modules/backend-errors/backend-errors.module';
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -21,6 +22,7 @@ import { AuthStoreModule } from 'src/app/modules/auth/store/auth-store.module';
     MatCardModule,
     MatButtonModule,
     AuthStoreModule,
+    BackendErrorsModule,
   ],
 })
 export class AuthModule {}

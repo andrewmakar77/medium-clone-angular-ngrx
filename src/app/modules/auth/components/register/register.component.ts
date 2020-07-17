@@ -4,7 +4,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import * as fromValidators from 'src/app/validators';
 import { ValidationService } from 'src/app/modules/shared/services/validation.service';
 import { AuthFacade } from 'src/app/modules/auth/store/auth.facade';
-import { ERoutes, IRegisterRequestData, IUserResponse } from 'src/app/models';
+import {
+  ERoutes,
+  IRegisterRequestData,
+  IUserResponse,
+  IBackendErrorMap,
+} from 'src/app/models';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,11 +22,29 @@ export class RegisterComponent implements OnInit {
   public link = `/${ERoutes.AUTH}/${ERoutes.LOGIN}`;
   public form: FormGroup;
   public user$: Observable<IUserResponse> = this.authFacade.user$;
+  public isLoading$: Observable<boolean> = this.authFacade.isLoading$;
+  public isLoaded$: Observable<boolean> = this.authFacade.isLoaded$;
+  public isError$: Observable<boolean> = this.authFacade.isError$;
+  public errorMessages$: Observable<IBackendErrorMap> = this.authFacade
+    .errorMessages$;
 
-  constructor(private fb: FormBuilder, public validationService: ValidationService, private authFacade: AuthFacade) {}
+  constructor(
+    private fb: FormBuilder,
+    private authFacade: AuthFacade,
+    public validationService: ValidationService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.clearFormOnLoaded();
+  }
+
+  private clearFormOnLoaded(): void {
+    this.isLoaded$.subscribe((isLoaded: boolean) => {
+      if (isLoaded) {
+        this.form.reset();
+      }
+    });
   }
 
   private initForm(): void {
