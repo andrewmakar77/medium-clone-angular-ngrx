@@ -12,8 +12,12 @@ export class BackendErrorsService {
   constructor(private titleCasePipe: TitleCasePipe) {}
 
   public mapErrors(errorsMap: IBackendErrorMap): void {
-    this.errors = Object.keys(errorsMap).map((name: string) => {
-      return `${this.titleCasePipe.transform(name)} ${errorsMap[name]}`;
-    });
+    try {
+      this.errors = Object.keys(errorsMap).map((name: string) => {
+        return `${this.titleCasePipe.transform(name)} ${errorsMap[name]}`;
+      });
+    } catch (error) {
+      console.error(`BackendService Error: ${error}`);
+    }
   }
 }
