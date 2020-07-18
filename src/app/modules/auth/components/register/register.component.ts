@@ -11,7 +11,9 @@ import {
   IBackendErrorMap,
 } from 'src/app/models';
 import { Observable } from 'rxjs';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'mc-register',
   templateUrl: './register.component.html',
@@ -40,7 +42,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private clearFormOnLoaded(): void {
-    this.isLoaded$.subscribe((isLoaded: boolean) => {
+    this.isLoaded$.pipe(untilDestroyed(this)).subscribe((isLoaded: boolean) => {
       if (isLoaded) {
         this.form.reset();
       }
