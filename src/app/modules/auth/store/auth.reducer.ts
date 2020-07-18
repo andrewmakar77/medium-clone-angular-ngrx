@@ -51,7 +51,7 @@ const reducer = createReducer(
       loaded: false,
       loading: false,
       error: true,
-      errorMessages: errors,
+      errorMessages: errors || {},
       data: {} as IUserResponse,
     })
   )
