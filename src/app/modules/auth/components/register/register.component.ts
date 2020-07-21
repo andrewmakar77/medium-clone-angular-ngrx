@@ -6,6 +6,7 @@ import * as fromModels from 'src/app/models';
 import { ValidationService } from 'src/app/modules/shared/services/validation.service';
 import { AuthFacade } from 'src/app/modules/auth/store/facades/auth.facade';
 import { Observable } from 'rxjs';
+import { SnackbarService } from 'src/app/modules/shared/services/snackbar.service';
 
 @Component({
   selector: 'mc-register',
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authFacade: AuthFacade,
-    public validationService: ValidationService
+    public validationService: ValidationService,
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit(): void {
