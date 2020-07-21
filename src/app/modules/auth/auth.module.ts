@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthStoreModule } from 'src/app/modules/auth/store/auth-store.module';
 import { BackendErrorsModule } from 'src/app/modules/backend-errors/backend-errors.module';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from 'src/app/modules/auth/components/login/login.component';
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
