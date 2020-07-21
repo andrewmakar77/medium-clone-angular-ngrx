@@ -6,17 +6,22 @@
     "REGISTER": {
       "TITLE": "Sign Up",
       "BUTTON": "Sign Up",
-      "SUBTITLE": "Have an account?",
-      "FORM": {
-        "USERNAME": "Username",
-        "EMAIL": "Email",
-        "PASSWORD": "Password",
-        "REQUIRED": "{{value}} is required",
-        "INVALID": "{{value}} is invalid",
-        "TOO_SHORT": "Value is too short. Minimum length - {{value}} characters",
-        "TOO_LONG": "Value is too long. Maximum length - {{value}} characters"
-      }
+      "SUBTITLE": "Have an account?"
+    },
+    "LOGIN": {
+      "TITLE": "Sign In",
+      "BUTTON": "Sign In",
+      "SUBTITLE": "Need an account?"
     }
+  },
+  "FORM": {
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "REQUIRED": "{{value}} is required",
+    "INVALID": "{{value}} is invalid",
+    "TOO_SHORT": "Value is too short. Minimum length - {{value}} characters",
+    "TOO_LONG": "Value is too long. Maximum length - {{value}} characters"
   },
   "Email": "Email",
   "Password": "Password",

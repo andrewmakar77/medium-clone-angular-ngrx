@@ -15,14 +15,19 @@ export class ValidationService {
       } = [];
   private controlName: string;
 
-  constructor(private titleCasePipe: TitleCasePipe, private translateService: TranslateService) {}
+  constructor(
+    private titleCasePipe: TitleCasePipe,
+    private translateService: TranslateService
+  ) {}
 
   private setControls(control: AbstractControl): void {
     this.controls = control.parent.controls;
   }
 
   private setControlName(control: AbstractControl): void {
-    this.controlName = Object.keys(this.controls).find((name) => control === this.controls[name]);
+    this.controlName = Object.keys(this.controls).find(
+      (name) => control === this.controls[name]
+    );
 
     this.capitalizeControlName();
   }
@@ -39,16 +44,16 @@ export class ValidationService {
     this.setControlName(control);
 
     const config = {
-      required: this.translateService.instant('AUTH.REGISTER.FORM.REQUIRED', {
+      required: this.translateService.instant('FORM.REQUIRED', {
         value: this.translateService.instant(this.controlName),
       }),
-      email: this.translateService.instant('AUTH.REGISTER.FORM.INVALID', {
+      email: this.translateService.instant('FORM.INVALID', {
         value: this.translateService.instant(this.controlName),
       }),
-      minlength: this.translateService.instant('AUTH.REGISTER.FORM.TOO_SHORT', {
+      minlength: this.translateService.instant('FORM.TOO_SHORT', {
         value: requiredMinLength,
       }),
-      maxlength: this.translateService.instant('AUTH.REGISTER.FORM.TOO_LONG', {
+      maxlength: this.translateService.instant('FORM.TOO_LONG', {
         value: requiredMaxLength,
       }),
     };

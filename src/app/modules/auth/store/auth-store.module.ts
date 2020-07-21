@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
+
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-
-import { authReducer, authFeatureKey } from 'src/app/modules/auth/store/auth.reducer';
-import { AuthEffects } from 'src/app/modules/auth/store/auth.effects';
+import * as fromReducer from 'src/app/modules/auth/store/reducers/auth.reducer';
+import { AuthEffects } from 'src/app/modules/auth/store/effects/auth.effects';
 
 @NgModule({
-  imports: [StoreModule.forFeature(authFeatureKey, authReducer), EffectsModule.forFeature([AuthEffects])],
+  imports: [
+    StoreModule.forFeature(fromReducer.authFeatureKey, fromReducer.authReducer),
+    EffectsModule.forFeature([AuthEffects]),
+  ],
 })
 export class AuthStoreModule {}
