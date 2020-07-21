@@ -9,6 +9,7 @@ import { MaterialModule } from 'src/app/modules/material/material.module';
 import { TranslationModule } from 'src/app/modules/translation/translation.module';
 import { AppStore } from 'src/app/modules/store/app-store.module';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
+import { CoreModule } from 'src/app/modules/core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { SharedModule } from 'src/app/modules/shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    CoreModule,
     SharedModule,
     MaterialModule,
     TranslationModule,
