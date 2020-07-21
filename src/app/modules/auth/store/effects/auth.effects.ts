@@ -4,20 +4,20 @@ import { Router } from '@angular/router';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, mergeMap, catchError, tap } from 'rxjs/operators';
+import { map, switchMap, catchError, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { LocalStorageService } from 'src/app/modules/shared/services/local-storage.service';
-import { AuthActionTypes } from 'src/app/modules/auth/store/auth.action-types';
+import { AuthActionTypes } from 'src/app/modules/auth/store/action-types/auth.action-types';
 import * as fromModels from 'src/app/models';
-import * as fromActions from 'src/app/modules/auth/store/auth.actions';
+import * as fromActions from 'src/app/modules/auth/store/actions/auth.actions';
 
 @Injectable()
 export class AuthEffects {
   registerUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActionTypes.REGISTER),
-      mergeMap((data: fromModels.IRegisterRequestData) =>
-        this.authService.register(data).pipe(
+      switchMap(({ user }: fromModels.IRegisterRequestData) =>
+        this.authService.register({ user }).pipe(
           map((userResponseData: fromModels.IAuthResponseData) => {
             this.localSotrageService.set(
               fromModels.ELocalStorageKeys.ACCESS_TOKEN,
@@ -33,10 +33,30 @@ export class AuthEffects {
     )
   );
 
+  loginUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActionTypes.LOGIN),
+      switchMap(({ user }: fromModels.ILoginRequestData) =>
+        this.authService.login({ user }).pipe(
+          map((userResponseData: fromModels.IAuthResponseData) => {
+            this.localSotrageService.set(
+              fromModels.ELocalStorageKeys.ACCESS_TOKEN,
+              userResponseData.user.token
+            );
+            return fromActions.loginSuccessAction(userResponseData);
+          }),
+          catchError((err: HttpErrorResponse) =>
+            of(fromActions.loginFailureAction(err.error))
+          )
+        )
+      )
+    )
+  );
+
   redirectToHomePage$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(fromActions.registerSuccessAction),
+        ofType(AuthActionTypes.REGISTER_SUCCESS, AuthActionTypes.LOGIN_SUCCESS),
         tap(() => this.router.navigate([fromModels.ERoutes.HOME]))
       ),
     { dispatch: false }

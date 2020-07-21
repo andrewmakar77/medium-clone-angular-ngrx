@@ -1,5 +1,5 @@
-import { IUser } from 'src/app/models/interfaces/user';
+import { TUserRegister } from '../../types';
 
 export interface IRegisterRequestData {
-  user: IUser;
+  user: TUserRegister;
 }

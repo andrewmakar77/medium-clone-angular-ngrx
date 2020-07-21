@@ -1,20 +1,19 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { AuthFacade } from 'src/app/modules/auth/store/facades/auth.facade';
+import { ValidationService } from 'src/app/modules/shared/services/validation.service';
 import * as fromValidators from 'src/app/validators';
 import * as fromModels from 'src/app/models';
-import { ValidationService } from 'src/app/modules/shared/services/validation.service';
-import { AuthFacade } from 'src/app/modules/auth/store/facades/auth.facade';
-import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'mc-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'mc-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegisterComponent implements OnInit {
-  public link = `/${fromModels.ERoutes.AUTH}/${fromModels.ERoutes.LOGIN}`;
+export class LoginComponent implements OnInit {
+  public link = `/${fromModels.ERoutes.AUTH}/${fromModels.ERoutes.REGISTER}`;
   public form: FormGroup;
   public user$: Observable<fromModels.IUserResponse> = this.authFacade.user$;
   public isLoading$: Observable<boolean> = this.authFacade.isLoading$;
@@ -34,7 +33,6 @@ export class RegisterComponent implements OnInit {
 
   private initForm(): void {
     this.form = this.fb.group({
-      username: ['', fromValidators.USERNAME_VALIDATORS],
       email: ['', fromValidators.EMAIL_VALIDATORS],
       password: ['', fromValidators.PASSWORD_VALIDATORS],
     });
@@ -45,10 +43,10 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    const requestData: fromModels.IRegisterRequestData = {
+    const requestData: fromModels.ILoginRequestData = {
       user: this.form.value,
     };
 
-    this.authFacade.register(requestData);
+    this.authFacade.login(requestData);
   }
 }
