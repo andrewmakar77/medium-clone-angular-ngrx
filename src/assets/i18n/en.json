@@ -23,6 +23,11 @@
     "TOO_SHORT": "Value is too short. Minimum length - {{value}} characters",
     "TOO_LONG": "Value is too long. Maximum length - {{value}} characters"
   },
+  "SNACKBAR": {
+    "ERRORS": {
+      "SOMETHING_WENT_WRONG": "Something went wrong!"
+    }
+  },
   "Email": "Email",
   "Password": "Password",
   "Username": "Username"
