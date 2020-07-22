@@ -5,5 +5,5 @@ export enum ERoutes {
   LOGIN = 'login',
   EDITOR = 'editor',
   SETTINGS = 'settings',
-  PROFILE = 'profile:user',
+  PROFILE = 'profile/:user',
 }

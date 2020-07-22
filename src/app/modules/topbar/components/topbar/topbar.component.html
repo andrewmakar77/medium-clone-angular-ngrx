@@ -1,22 +1,27 @@
 <mat-toolbar>
   <a [routerLink]="homeLink">Medium</a>
   <div *ngIf="isLoaded; else authBlock">
-    <a mat-button [routerLink]="editorLink">{{
-      'TOPBAR.NEW_POST' | translate
-    }}</a>
-    <a mat-button [routerLink]="settingsLink">{{
-      'TOPBAR.SETTINGS' | translate
-    }}</a>
-    <a mat-button [routerLink]="profileLink">{{ user.username }}</a>
+    <a mat-button [routerLink]="editorLink" routerLinkActive="mat-primary">
+      <mat-icon>edit</mat-icon>
+      {{ 'TOPBAR.NEW_POST' | translate }}
+    </a>
+    <a mat-button [routerLink]="settingsLink" routerLinkActive="mat-primary">
+      <mat-icon>settings</mat-icon>
+      {{ 'TOPBAR.SETTINGS' | translate }}
+    </a>
+    <a mat-button [routerLink]="profileLink" routerLinkActive="mat-primary">
+      <mat-icon>person</mat-icon>
+      {{ user.username }}
+    </a>
   </div>
   <ng-template #authBlock>
     <div>
-      <a mat-button [routerLink]="loginLink">{{
-        'TOPBAR.SIGN_IN' | translate
-      }}</a>
-      <a mat-button [routerLink]="registerLink">{{
-        'TOPBAR.SIGN_UP' | translate
-      }}</a>
+      <a mat-button [routerLink]="loginLink" routerLinkActive="mat-primary">
+        {{ 'TOPBAR.SIGN_IN' | translate }}
+      </a>
+      <a mat-button [routerLink]="registerLink" routerLinkActive="mat-primary">
+        {{ 'TOPBAR.SIGN_UP' | translate }}
+      </a>
     </div>
   </ng-template>
 </mat-toolbar>
