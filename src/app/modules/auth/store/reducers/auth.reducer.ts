@@ -82,7 +82,35 @@ const reducer = createReducer(
       errorMessages: errors || {},
       data: {} as fromModels.IUserResponse,
     })
-  )
+  ),
+  on(fromActions.getUserAction, (state: fromModels.IAuthState) => ({
+    ...state,
+    loaded: false,
+    loading: true,
+    error: false,
+    errorMessages: {},
+    data: {} as fromModels.IUserResponse,
+  })),
+  on(
+    fromActions.getUserSuccessAction,
+    (state: fromModels.IAuthState, { user }: fromModels.IAuthResponseData) => ({
+      ...state,
+      loaded: true,
+      loading: false,
+      error: false,
+      data: {
+        ...user,
+      },
+    })
+  ),
+  on(fromActions.getUserFailureAction, (state: fromModels.IAuthState) => ({
+    ...state,
+    loaded: false,
+    loading: false,
+    error: true,
+    errorMessages: {},
+    data: {} as fromModels.IUserResponse,
+  }))
 );
 
 export function authReducer(state: fromModels.IAuthState, action: Action) {

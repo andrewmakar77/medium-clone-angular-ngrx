@@ -14,7 +14,7 @@ import * as fromModels from 'src/app/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
-  public link = `/${fromModels.ERoutes.AUTH}/${fromModels.ERoutes.REGISTER}`;
+  public readonly link = `/${fromModels.ERoutes.AUTH}/${fromModels.ERoutes.REGISTER}`;
   public form: FormGroup;
   public user$: Observable<fromModels.IUserResponse> = this.authFacade.user$;
   public isLoading$: Observable<boolean> = this.authFacade.isLoading$;
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     public validationService: ValidationService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 

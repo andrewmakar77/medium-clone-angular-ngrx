@@ -16,7 +16,7 @@ export const selectIsLoading = createSelector(
 );
 export const selectIsLoaded = createSelector(
   selectFeature,
-  (state: IAuthState) => state.loaded
+  (state: IAuthState) => state?.loaded
 );
 export const selectErrorMessages = createSelector(
   selectFeature,

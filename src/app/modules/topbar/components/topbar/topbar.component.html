@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <a [routerLink]="homeLink">Medium</a>
+  <div *ngIf="isLoaded; else authBlock">
+    <a mat-button [routerLink]="editorLink">{{
+      'TOPBAR.NEW_POST' | translate
+    }}</a>
+    <a mat-button [routerLink]="settingsLink">{{
+      'TOPBAR.SETTINGS' | translate
+    }}</a>
+    <a mat-button [routerLink]="profileLink">{{ user.username }}</a>
+  </div>
+  <ng-template #authBlock>
+    <div>
+      <a mat-button [routerLink]="loginLink">{{
+        'TOPBAR.SIGN_IN' | translate
+      }}</a>
+      <a mat-button [routerLink]="registerLink">{{
+        'TOPBAR.SIGN_UP' | translate
+      }}</a>
+    </div>
+  </ng-template>
+</mat-toolbar>
