@@ -8,6 +8,7 @@ import {
 
 import { Observable } from 'rxjs';
 import { AuthFacade } from 'src/app/modules/auth/store/facades/auth.facade';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,8 @@ export class NonAuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return !this.authFacade.isLoaded$;
+    return this.authFacade.isLoaded$.pipe(
+      map((isLoaded: boolean) => !isLoaded)
+    );
   }
 }
