@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
+import * as fromConfigs from 'src/app/modules/material/configs';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import {
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
   MatSnackBarModule,
 } from '@angular/material/snack-bar';
-import * as fromConfigs from 'src/app/modules/material/configs';
 
 @NgModule({
   imports: [MatSnackBarModule],
