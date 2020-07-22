@@ -14,9 +14,25 @@ export class LocalStorageService {
 
   get(key: string): any {
     try {
-      return JSON.parse(localStorage.getItem(key));
+      return JSON.parse(JSON.stringify(localStorage.getItem(key)));
     } catch (error) {
       console.error(`LocalStorageService get: ${error}`);
+    }
+  }
+
+  removeItem(key: string): void {
+    try {
+      localStorage.removeItem(key);
+    } catch (error) {
+      console.error(`LocalStorageService removeItem: ${error}`);
+    }
+  }
+
+  clear(): void {
+    try {
+      localStorage.clear();
+    } catch (error) {
+      console.error(`LocalStorageService clear: ${error}`);
     }
   }
 }

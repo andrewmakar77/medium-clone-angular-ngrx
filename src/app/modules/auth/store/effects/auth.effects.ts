@@ -53,6 +53,31 @@ export class AuthEffects {
     )
   );
 
+  getUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActionTypes.GET_USER),
+      switchMap(() => {
+        const token = this.localSotrageService.get(
+          fromModels.ELocalStorageKeys.ACCESS_TOKEN
+        );
+
+        if (!token) {
+          return of(fromActions.getUserFailureAction());
+        }
+        return this.authService.getUser().pipe(
+          map((userResponseData: fromModels.IAuthResponseData) =>
+            fromActions.getUserSuccessAction(userResponseData)
+          ),
+          catchError(() => {
+            console.log('errr');
+
+            return of(fromActions.getUserFailureAction());
+          })
+        );
+      })
+    )
+  );
+
   redirectToHomePage$ = createEffect(
     () =>
       this.actions$.pipe(

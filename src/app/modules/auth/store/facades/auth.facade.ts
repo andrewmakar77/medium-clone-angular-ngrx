@@ -35,4 +35,8 @@ export class AuthFacade {
   public login(data: fromModels.ILoginRequestData): void {
     this.store.dispatch(fromActions.loginAction(data));
   }
+
+  public getUser(): void {
+    this.store.dispatch(fromActions.getUserAction());
+  }
 }

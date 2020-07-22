@@ -29,4 +29,8 @@ export class AuthService {
       data
     );
   }
+
+  public getUser(): Observable<IAuthResponseData> {
+    return this.http.get<IAuthResponseData>(ApiUrlGenerator.generate('user'));
+  }
 }

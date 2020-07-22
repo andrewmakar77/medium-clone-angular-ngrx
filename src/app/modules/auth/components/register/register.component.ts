@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
-  public link = `/${fromModels.ERoutes.AUTH}/${fromModels.ERoutes.LOGIN}`;
+  public readonly link = `/${fromModels.ERoutes.AUTH}/${fromModels.ERoutes.LOGIN}`;
   public form: FormGroup;
   public user$: Observable<fromModels.IUserResponse> = this.authFacade.user$;
   public isLoading$: Observable<boolean> = this.authFacade.isLoading$;
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     public validationService: ValidationService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 

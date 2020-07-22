@@ -6,7 +6,7 @@ import { LoginComponent } from 'src/app/modules/auth/components/login/login.comp
 import { ERoutes } from 'src/app/models';
 
 const routes: Routes = [
-  { path: '', redirectTo: `${ERoutes.REGISTER}` },
+  { path: '', redirectTo: `${ERoutes.LOGIN}` },
   { path: `${ERoutes.REGISTER}`, component: RegisterComponent },
   { path: `${ERoutes.LOGIN}`, component: LoginComponent },
 ];
