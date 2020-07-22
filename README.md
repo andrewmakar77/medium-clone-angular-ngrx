@@ -27,4 +27,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 Setup prettier: https://www.daptontechnologies.com/angular-prettier-husky/
+
 Github actions: https://fireship.io/snippets/github-actions-deploy-angular-to-firebase-hosting/
+
+Init data before App Init using APP_INITIALIZER: https://tutorialsforangular.com/2019/12/05/using-the-app_initializer-token-to-bootstrap-your-application/ , https://github.com/andrewmakar77/medium-clone-angular-ngrx/blob/master/src/app/modules/core/core.module.ts
