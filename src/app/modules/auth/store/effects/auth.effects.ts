@@ -68,11 +68,7 @@ export class AuthEffects {
           map((userResponseData: fromModels.IAuthResponseData) =>
             fromActions.getUserSuccessAction(userResponseData)
           ),
-          catchError(() => {
-            console.log('errr');
-
-            return of(fromActions.getUserFailureAction());
-          })
+          catchError(() => of(fromActions.getUserFailureAction()))
         );
       })
     )
