@@ -3,4 +3,7 @@ export enum ERoutes {
   AUTH = 'auth',
   REGISTER = 'register',
   LOGIN = 'login',
+  EDITOR = 'editor',
+  SETTINGS = 'settings',
+  PROFILE = 'profile:user',
 }

@@ -29,3 +29,14 @@ export const registerFailureAction = createAction(
   AuthActionTypes.REGISTER_FAILURE,
   props<{ errors: fromModels.IBackendErrorMap }>()
 );
+
+export const getUserAction = createAction(AuthActionTypes.GET_USER);
+
+export const getUserSuccessAction = createAction(
+  AuthActionTypes.GET_USER_SUCCESS,
+  props<fromModels.IAuthResponseData>()
+);
+
+export const getUserFailureAction = createAction(
+  AuthActionTypes.GET_USER_FAILURE
+);

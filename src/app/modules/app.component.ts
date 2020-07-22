@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthFacade } from 'src/app/modules/auth/store/facades/auth.facade';
+
+import { Observable } from 'rxjs';
+import { IUserResponse } from 'src/app/models';
 
 @Component({
   selector: 'mc-root',
   template: `
-    <div routerLink="/">{{ 'HOME.STARTER' | translate }}</div>
+    <mc-topbar
+      [user]="user$ | async"
+      [isLoaded]="isUserLoaded$ | async"
+    ></mc-topbar>
     <router-outlet></router-outlet>
   `,
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  public isUserLoaded$: Observable<boolean> = this.authFacade.isLoaded$;
+  public user$: Observable<IUserResponse> = this.authFacade.user$;
+
+  constructor(private authFacade: AuthFacade) {}
+
+  public ngOnInit(): void {
+    this.authFacade.getUser();
+  }
+}
