@@ -25,7 +25,10 @@ export class NonAuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     return this.authFacade.isLoaded$.pipe(
-      map((isLoaded: boolean) => !isLoaded)
+      map((isLoaded: boolean) => {
+        console.log(!isLoaded, 'Loaded in guard');
+        return !isLoaded;
+      })
     );
   }
 }
