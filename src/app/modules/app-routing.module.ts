@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ERoutes } from 'src/app/models';
+import { NonAuthGuard } from 'src/app/modules/core/guards/non-auth.guard';
 
 const routes: Routes = [
   {
     path: `${ERoutes.AUTH}`,
+    canActivate: [NonAuthGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];
