@@ -1,0 +1,13 @@
+<div class="home-container">
+  <div class="feed-container">
+    <mc-tabs
+      [links]="links"
+      [activeLink]="activeLink"
+      (selectTab)="onSelect($event)"
+    ></mc-tabs>
+    <router-outlet></router-outlet>
+  </div>
+  <mat-card>
+    TAGS
+  </mat-card>
+</div>

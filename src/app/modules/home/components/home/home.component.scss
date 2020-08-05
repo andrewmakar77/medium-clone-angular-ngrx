@@ -1,0 +1,11 @@
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin: 20px auto 0;
+
+  .mat-card {
+    width: 280px;
+    margin-left: 20px;
+  }
+}

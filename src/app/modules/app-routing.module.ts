@@ -6,6 +6,10 @@ import { NonAuthGuard } from 'src/app/modules/core/guards/non-auth.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
+  {
     path: `${ERoutes.AUTH}`,
     canActivate: [NonAuthGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
