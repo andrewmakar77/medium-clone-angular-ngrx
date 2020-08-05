@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 import * as fromActions from 'src/app/modules/feed/store/actions/feed.actions';
 import * as fromModels from 'src/app/models';
+import { IArticle } from 'src/app/models';
 
 export const feedFeatureKey = 'feed';
 
@@ -21,11 +22,11 @@ const reducer = createReducer(
     loading: true,
     error: false,
     errorMessages: {},
-    data: {} as any,
+    data: {} as fromModels.IArticle[],
   })),
   on(
     fromActions.getFeedSuccessAction,
-    (state: fromModels.IFeedState, { articles }: any) => ({
+    (state: fromModels.IFeedState, { articles }: { articles: IArticle[] }) => ({
       ...state,
       loaded: true,
       loading: false,
@@ -46,7 +47,7 @@ const reducer = createReducer(
       loading: false,
       error: true,
       errorMessages: errors || {},
-      data: {} as any,
+      data: {} as fromModels.IArticle[],
     })
   )
 );

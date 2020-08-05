@@ -6,6 +6,7 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { FeedService } from 'src/app/modules/feed/services/feed.service';
 import { FeedActionTypes } from 'src/app/modules/feed/store/action-types/feed.action-types';
+import { IFeedResponseData } from 'src/app/models';
 import * as fromActions from 'src/app/modules/feed/store/actions/feed.actions';
 
 @Injectable()
@@ -13,9 +14,9 @@ export class FeedEffects {
   getFeed$ = createEffect(() =>
     this.actions$.pipe(
       ofType(FeedActionTypes.GET_FEED),
-      switchMap(({ url }) =>
+      switchMap(({ url }: { url: string }) =>
         this.feedService.getFeed(url).pipe(
-          map(({ articles }: any) => {
+          map(({ articles }: IFeedResponseData) => {
             return fromActions.getFeedSuccessAction({ articles });
           }),
           catchError((err: HttpErrorResponse) =>

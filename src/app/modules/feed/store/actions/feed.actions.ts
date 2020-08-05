@@ -10,7 +10,7 @@ export const getFeedAction = createAction(
 
 export const getFeedSuccessAction = createAction(
   FeedActionTypes.GET_FEED_SUCCESS,
-  props<any>()
+  props<{ articles: fromModels.IArticle[] }>()
 );
 
 export const getFeedFailureAction = createAction(

@@ -5,4 +5,6 @@ export * from './feed-state';
 export * from './register-request-data';
 export * from './login-request-data';
 export * from './auth-response-data';
+export * from './feed-response-data';
 export * from './backend-error';
+export * from './article';

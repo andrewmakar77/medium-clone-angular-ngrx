@@ -1,1 +1,1 @@
-<pre *ngIf="feed$ | async as feed">{{ feed | json }}</pre>
+<pre *ngIf="isLoaded$ | async">{{ feed$ | async | json }}</pre>

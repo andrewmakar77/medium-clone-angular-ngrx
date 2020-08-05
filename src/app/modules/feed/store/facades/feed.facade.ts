@@ -10,7 +10,7 @@ import * as fromSelectors from 'src/app/modules/feed/store/selectors/feed.select
   providedIn: 'root',
 })
 export class FeedFacade {
-  public feed$: Observable<any> = this.store.pipe(
+  public feed$: Observable<fromModels.IArticle[]> = this.store.pipe(
     select(fromSelectors.selectFeed)
   );
   public isLoading$: Observable<boolean> = this.store.pipe(
