@@ -7,15 +7,7 @@ import { NonAuthGuard } from 'src/app/modules/core/guards/non-auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: `${ERoutes.GLOBAL_FEED}`,
-    pathMatch: 'full',
-  },
-  {
-    path: `${ERoutes.GLOBAL_FEED}`,
-    loadChildren: () =>
-      import('./global-feed/global-feed.module').then(
-        (m) => m.GlobalFeedModule
-      ),
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
     path: `${ERoutes.AUTH}`,
