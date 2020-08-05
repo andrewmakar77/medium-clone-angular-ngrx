@@ -12,7 +12,7 @@
           [alt]="item.author.username"
         />
         <div class="feed-item-info">
-          <strong class="text-truncate">{{ item.author.username }}</strong>
+          <strong>{{ item.author.username }}</strong>
           <div>{{ item.createdAt | date }}</div>
         </div>
       </div>
@@ -25,8 +25,7 @@
     <h1>{{ item.title }}</h1>
     <p>{{ item.description }}</p>
     <div class="feed-item-block-3">
-      <!-- TODO: Translation -->
-      <small>Read more...</small>
+      <small>{{ 'FEED_ITEM.READ_MORE' | translate }}</small>
       <mat-chip-list>
         <mat-chip *ngFor="let tag of item.tagList; trackBy: trackTag">
           {{ tag }}

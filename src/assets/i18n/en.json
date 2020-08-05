@@ -32,6 +32,9 @@
     "NEW_POST": "New Post",
     "SETTINGS": "Settings"
   },
+  "FEED_ITEM": {
+    "READ_MORE": "Read more.."
+  },
   "Email": "Email",
   "Password": "Password",
   "Username": "Username"

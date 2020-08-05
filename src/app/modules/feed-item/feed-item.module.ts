@@ -7,6 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [FeedItemComponent],
@@ -17,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatBadgeModule,
     MatIconModule,
     MatButtonModule,
+    TranslateModule.forChild(),
   ],
   exports: [FeedItemComponent],
 })
