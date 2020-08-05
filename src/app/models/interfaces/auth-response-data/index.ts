@@ -7,6 +7,7 @@ export interface IUserResponse {
   token: string;
   updatedAt: string;
   username: string;
+  following?: boolean;
 }
 
 export interface IAuthResponseData {

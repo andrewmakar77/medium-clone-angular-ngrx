@@ -1,19 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'mc-my-feed',
   templateUrl: './my-feed.component.html',
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MyFeedComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class MyFeedComponent {
+  public readonly apiUrl = 'articles/feed?limit=10&offset=0';
 }
