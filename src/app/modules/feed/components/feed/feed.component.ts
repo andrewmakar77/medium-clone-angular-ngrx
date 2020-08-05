@@ -12,24 +12,22 @@ import { IArticle } from 'src/app/models';
 @Component({
   selector: 'mc-feed',
   templateUrl: './feed.component.html',
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
+  styleUrls: ['./feed.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedComponent implements OnInit {
   @Input() public apiUrl: string;
 
   public feed$: Observable<IArticle[]> = this.feedFacade.feed$;
-  public isLoaded$: Observable<boolean> = this.feedFacade.isLoaded$;
+  public isLoading$: Observable<boolean> = this.feedFacade.isLoading$;
 
   constructor(private feedFacade: FeedFacade) {}
 
   ngOnInit(): void {
     this.feedFacade.getFeed(this.apiUrl);
+  }
+
+  public trackItem(index: number, item: IArticle): string {
+    return item.slug;
   }
 }

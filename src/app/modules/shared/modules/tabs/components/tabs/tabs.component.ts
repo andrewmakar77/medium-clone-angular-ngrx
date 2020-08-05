@@ -22,4 +22,8 @@ export class TabsComponent {
 
     this.selectTab.emit(link);
   }
+
+  public trackLink(index: number, link: string): string {
+    return `${link}-${index}`;
+  }
 }
