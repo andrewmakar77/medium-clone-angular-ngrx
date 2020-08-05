@@ -1,11 +1,23 @@
 .home-container {
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
-  padding: 0 16px;
+  flex-wrap: wrap-reverse;
   margin: 20px auto 0;
 
+  .feed-container {
+    flex: 3;
+    margin: 0 16px;
+
+    .feed {
+      height: calc(100vh - 150px);
+      overflow: auto;
+    }
+  }
+
   .mat-card {
-    width: 280px;
-    margin-left: 20px;
+    flex: 1;
+    height: 200px;
+    margin: 0 16px 16px;
   }
 }
