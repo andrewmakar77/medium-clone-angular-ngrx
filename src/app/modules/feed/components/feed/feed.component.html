@@ -1,1 +1,15 @@
-<pre *ngIf="isLoaded$ | async">{{ feed$ | async | json }}</pre>
+<mat-spinner
+  diameter="60"
+  *ngIf="isLoading$ | async; else feedRef"
+></mat-spinner>
+<ng-template #feedRef>
+  <cdk-virtual-scroll-viewport itemSize="170">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option
+        *cdkVirtualFor="let item of feed$ | async; trackBy: trackItem"
+      >
+        <mc-feed-item [item]="item"></mc-feed-item>
+      </mat-list-option>
+    </mat-selection-list>
+  </cdk-virtual-scroll-viewport>
+</ng-template>

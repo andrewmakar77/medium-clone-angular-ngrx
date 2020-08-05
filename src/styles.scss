@@ -14,6 +14,20 @@ body {
   overflow: hidden;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 4px !important;
+}
+
+a {
+  text-decoration: none;
+  color: #707070;
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -39,7 +53,18 @@ input:-webkit-autofill:active {
   background-color: #707070;
 }
 
-a {
-  text-decoration: none;
-  color: #707070;
+mat-spinner {
+  margin: auto;
+}
+
+cdk-virtual-scroll-viewport {
+  height: 100%;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

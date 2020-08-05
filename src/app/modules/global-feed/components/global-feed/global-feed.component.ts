@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './global-feed.component.html',
 })
 export class GlobalFeedComponent {
-  public readonly apiUrl = 'articles?limit=10&offset=0';
+  public readonly apiUrl = 'articles?limit=20&offset=0';
 }

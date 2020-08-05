@@ -1,7 +1,7 @@
 <nav mat-tab-nav-bar>
   <a
     mat-tab-link
-    *ngFor="let link of links"
+    *ngFor="let link of links; trackBy: trackLink"
     (click)="onClick(link)"
     [active]="activeLink === link"
   >
