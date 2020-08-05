@@ -7,7 +7,6 @@ import { FeedItemModule } from 'src/app/modules/feed-item/feed-item.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [FeedComponent],
@@ -18,7 +17,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ScrollingModule,
     MatListModule,
     MatProgressSpinnerModule,
-    DragDropModule,
   ],
   exports: [FeedComponent],
 })
