@@ -4,4 +4,6 @@ import { Component } from '@angular/core';
   selector: 'mc-global-feed',
   templateUrl: './global-feed.component.html',
 })
-export class GlobalFeedComponent {}
+export class GlobalFeedComponent {
+  public readonly apiUrl = 'articles?limit=10&offset=0';
+}

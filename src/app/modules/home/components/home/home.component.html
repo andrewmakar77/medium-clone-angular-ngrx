@@ -5,7 +5,9 @@
       [activeLink]="activeLink"
       (selectTab)="onSelect($event)"
     ></mc-tabs>
-    <router-outlet></router-outlet>
+    <div class="feed">
+      <router-outlet></router-outlet>
+    </div>
   </div>
   <mat-card>
     TAGS
