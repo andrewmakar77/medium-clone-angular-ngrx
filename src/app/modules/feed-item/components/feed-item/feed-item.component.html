@@ -1,0 +1,38 @@
+<ng-container *ngIf="item">
+  <div class="feed-item-container">
+    <div class="feed-item-block">
+      <div class="feed-item-block-2">
+        <img
+          class="author-image"
+          loading="lazy"
+          [src]="
+            item.author.image ||
+            'https://static.productionready.io/images/smiley-cyrus.jpg'
+          "
+          [alt]="item.author.username"
+        />
+        <div class="feed-item-info">
+          <strong class="text-truncate">{{ item.author.username }}</strong>
+          <div>{{ item.createdAt | date }}</div>
+        </div>
+      </div>
+      <button mat-raised-button>
+        <mat-icon [matBadge]="item.favoritesCount" matBadgeColor="warn">
+          favorite
+        </mat-icon>
+      </button>
+    </div>
+    <h1>{{ item.title }}</h1>
+    <p>{{ item.description }}</p>
+    <div class="feed-item-block-3">
+      <!-- TODO: Translation -->
+      <small>Read more...</small>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of item.tagList; trackBy: trackTag">
+          {{ tag }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</ng-container>

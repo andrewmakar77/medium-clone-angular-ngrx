@@ -11,7 +11,7 @@ export const initialState: fromModels.IFeedState = {
   loading: null,
   error: null,
   errorMessages: {},
-  data: {} as any,
+  data: [] as IArticle[],
 };
 
 const reducer = createReducer(
@@ -22,7 +22,7 @@ const reducer = createReducer(
     loading: true,
     error: false,
     errorMessages: {},
-    data: {} as fromModels.IArticle[],
+    data: [] as fromModels.IArticle[],
   })),
   on(
     fromActions.getFeedSuccessAction,
@@ -31,9 +31,7 @@ const reducer = createReducer(
       loaded: true,
       loading: false,
       error: false,
-      data: {
-        ...articles,
-      },
+      data: [...articles],
     })
   ),
   on(
@@ -47,7 +45,7 @@ const reducer = createReducer(
       loading: false,
       error: true,
       errorMessages: errors || {},
-      data: {} as fromModels.IArticle[],
+      data: [] as fromModels.IArticle[],
     })
   )
 );
