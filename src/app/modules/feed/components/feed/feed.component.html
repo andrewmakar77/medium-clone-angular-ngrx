@@ -3,13 +3,18 @@
   *ngIf="isLoading$ | async; else feedRef"
 ></mat-spinner>
 <ng-template #feedRef>
-  <cdk-virtual-scroll-viewport itemSize="170">
-    <mat-selection-list [multiple]="false">
-      <mat-list-option
-        *cdkVirtualFor="let item of feed$ | async; trackBy: trackItem"
-      >
-        <mc-feed-item [item]="item"></mc-feed-item>
-      </mat-list-option>
-    </mat-selection-list>
-  </cdk-virtual-scroll-viewport>
+  <ng-container *ngIf="(feed$ | async)?.length; else emptyRef">
+    <cdk-virtual-scroll-viewport itemSize="170">
+      <mat-selection-list [multiple]="false">
+        <mat-list-option
+          *cdkVirtualFor="let item of feed$ | async; trackBy: trackItem"
+        >
+          <mc-feed-item [item]="item"></mc-feed-item>
+        </mat-list-option>
+      </mat-selection-list>
+    </cdk-virtual-scroll-viewport>
+  </ng-container>
+  <ng-template #emptyRef>
+    <h3 class="empty-placeholder">No articles are here... yet.</h3>
+  </ng-template>
 </ng-template>
