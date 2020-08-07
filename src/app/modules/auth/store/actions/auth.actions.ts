@@ -38,5 +38,6 @@ export const getUserSuccessAction = createAction(
 );
 
 export const getUserFailureAction = createAction(
-  AuthActionTypes.GET_USER_FAILURE
+  AuthActionTypes.GET_USER_FAILURE,
+  props<{ errors: fromModels.IBackendErrorMap }>()
 );
