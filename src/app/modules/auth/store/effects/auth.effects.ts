@@ -62,13 +62,15 @@ export class AuthEffects {
         );
 
         if (!token) {
-          return of(fromActions.getUserFailureAction());
+          return of(fromActions.getUserFailureAction({ errors: {} }));
         }
         return this.authService.getUser().pipe(
           map((userResponseData: fromModels.IAuthResponseData) =>
             fromActions.getUserSuccessAction(userResponseData)
           ),
-          catchError(() => of(fromActions.getUserFailureAction()))
+          catchError((err: HttpErrorResponse) =>
+            of(fromActions.getUserFailureAction(err.error))
+          )
         );
       })
     )
