@@ -13,18 +13,125 @@ export const initialState: fromModels.IAuthState = {
   data: {} as fromModels.IUserResponse,
 };
 
+// const reducer = createReducer(
+//   initialState,
+//   on(fromActions.registerAction, (state: fromModels.IAuthState) => ({
+//     ...state,
+//     loaded: false,
+//     loading: true,
+//     error: false,
+//     errorMessages: {},
+//     data: {} as fromModels.IUserResponse,
+//   })),
+//   on(
+//     fromActions.registerSuccessAction,
+//     (state: fromModels.IAuthState, { user }: fromModels.IAuthResponseData) => ({
+//       ...state,
+//       loaded: true,
+//       loading: false,
+//       error: false,
+//       data: {
+//         ...user,
+//       },
+//     })
+//   ),
+//   on(
+//     fromActions.registerFailureAction,
+//     (
+//       state: fromModels.IAuthState,
+//       { errors }: { errors: fromModels.IBackendErrorMap }
+//     ) => ({
+//       ...state,
+//       loaded: false,
+//       loading: false,
+//       error: true,
+//       errorMessages: errors || {},
+//       data: {} as fromModels.IUserResponse,
+//     })
+//   ),
+//   on(fromActions.loginAction, (state: fromModels.IAuthState) => ({
+//     ...state,
+//     loaded: false,
+//     loading: true,
+//     error: false,
+//     errorMessages: {},
+//     data: {} as fromModels.IUserResponse,
+//   })),
+//   on(
+//     fromActions.loginSuccessAction,
+//     (state: fromModels.IAuthState, { user }: fromModels.IAuthResponseData) => ({
+//       ...state,
+//       loaded: true,
+//       loading: false,
+//       error: false,
+//       data: {
+//         ...user,
+//       },
+//     })
+//   ),
+//   on(
+//     fromActions.loginFailureAction,
+//     (
+//       state: fromModels.IAuthState,
+//       { errors }: { errors: fromModels.IBackendErrorMap }
+//     ) => ({
+//       ...state,
+//       loaded: false,
+//       loading: false,
+//       error: true,
+//       errorMessages: errors || {},
+//       data: {} as fromModels.IUserResponse,
+//     })
+//   ),
+//   on(fromActions.getUserAction, (state: fromModels.IAuthState) => ({
+//     ...state,
+//     loaded: false,
+//     loading: true,
+//     error: false,
+//     errorMessages: {},
+//     data: {} as fromModels.IUserResponse,
+//   })),
+//   on(
+//     fromActions.getUserSuccessAction,
+//     (state: fromModels.IAuthState, { user }: fromModels.IAuthResponseData) => ({
+//       ...state,
+//       loaded: true,
+//       loading: false,
+//       error: false,
+//       data: {
+//         ...user,
+//       },
+//     })
+//   ),
+//   on(fromActions.getUserFailureAction, (state: fromModels.IAuthState) => ({
+//     ...state,
+//     loaded: false,
+//     loading: false,
+//     error: true,
+//     errorMessages: {},
+//     data: {} as fromModels.IUserResponse,
+//   }))
+// );
+
 const reducer = createReducer(
   initialState,
-  on(fromActions.registerAction, (state: fromModels.IAuthState) => ({
-    ...state,
-    loaded: false,
-    loading: true,
-    error: false,
-    errorMessages: {},
-    data: {} as fromModels.IUserResponse,
-  })),
+  on(
+    fromActions.registerAction,
+    fromActions.loginAction,
+    fromActions.getUserAction,
+    (state: fromModels.IAuthState) => ({
+      ...state,
+      loaded: false,
+      loading: true,
+      error: false,
+      errorMessages: {},
+      data: {} as fromModels.IUserResponse,
+    })
+  ),
   on(
     fromActions.registerSuccessAction,
+    fromActions.loginSuccessAction,
+    fromActions.getUserSuccessAction,
     (state: fromModels.IAuthState, { user }: fromModels.IAuthResponseData) => ({
       ...state,
       loaded: true,
@@ -37,40 +144,8 @@ const reducer = createReducer(
   ),
   on(
     fromActions.registerFailureAction,
-    (
-      state: fromModels.IAuthState,
-      { errors }: { errors: fromModels.IBackendErrorMap }
-    ) => ({
-      ...state,
-      loaded: false,
-      loading: false,
-      error: true,
-      errorMessages: errors || {},
-      data: {} as fromModels.IUserResponse,
-    })
-  ),
-  on(fromActions.loginAction, (state: fromModels.IAuthState) => ({
-    ...state,
-    loaded: false,
-    loading: true,
-    error: false,
-    errorMessages: {},
-    data: {} as fromModels.IUserResponse,
-  })),
-  on(
-    fromActions.loginSuccessAction,
-    (state: fromModels.IAuthState, { user }: fromModels.IAuthResponseData) => ({
-      ...state,
-      loaded: true,
-      loading: false,
-      error: false,
-      data: {
-        ...user,
-      },
-    })
-  ),
-  on(
     fromActions.loginFailureAction,
+    fromActions.getUserFailureAction,
     (
       state: fromModels.IAuthState,
       { errors }: { errors: fromModels.IBackendErrorMap }
@@ -82,35 +157,7 @@ const reducer = createReducer(
       errorMessages: errors || {},
       data: {} as fromModels.IUserResponse,
     })
-  ),
-  on(fromActions.getUserAction, (state: fromModels.IAuthState) => ({
-    ...state,
-    loaded: false,
-    loading: true,
-    error: false,
-    errorMessages: {},
-    data: {} as fromModels.IUserResponse,
-  })),
-  on(
-    fromActions.getUserSuccessAction,
-    (state: fromModels.IAuthState, { user }: fromModels.IAuthResponseData) => ({
-      ...state,
-      loaded: true,
-      loading: false,
-      error: false,
-      data: {
-        ...user,
-      },
-    })
-  ),
-  on(fromActions.getUserFailureAction, (state: fromModels.IAuthState) => ({
-    ...state,
-    loaded: false,
-    loading: false,
-    error: true,
-    errorMessages: {},
-    data: {} as fromModels.IUserResponse,
-  }))
+  )
 );
 
 export function authReducer(state: fromModels.IAuthState, action: Action) {

@@ -1,0 +1,8 @@
+<mat-card *ngIf="isLoaded$ | async">
+  <mat-chip-list>
+    <mat-chip *ngFor="let tag of tags$ | async; trackBy: trackTag">
+      {{ tag }}
+    </mat-chip>
+  </mat-chip-list>
+</mat-card>
+<mat-spinner *ngIf="isLoading$ | async" diameter="60"></mat-spinner>
