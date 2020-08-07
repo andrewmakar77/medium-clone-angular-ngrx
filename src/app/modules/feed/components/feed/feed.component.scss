@@ -7,6 +7,11 @@
   padding-top: 0 !important;
 }
 
-mat-spinner {
+mat-spinner,
+.empty-placeholder {
   margin-top: 40px;
+}
+
+.empty-placeholder {
+  text-align: center;
 }

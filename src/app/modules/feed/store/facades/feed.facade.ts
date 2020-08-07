@@ -31,4 +31,8 @@ export class FeedFacade {
   public getFeed(url: string): void {
     this.store.dispatch(fromActions.getFeedAction({ url }));
   }
+
+  public favoriteArticle(article: fromModels.IArticle): void {
+    this.store.dispatch(fromActions.updateArticleAction({ article }));
+  }
 }

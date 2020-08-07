@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  OnInit,
+} from '@angular/core';
 
 import * as fromModels from 'src/app/models';
 
@@ -8,7 +13,7 @@ import * as fromModels from 'src/app/models';
   styleUrls: ['./topbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TopbarComponent {
+export class TopbarComponent implements OnInit {
   @Input() public isLoaded: boolean;
   @Input() public user: fromModels.IUserResponse;
 
@@ -17,5 +22,9 @@ export class TopbarComponent {
   public readonly registerLink = `${fromModels.ERoutes.AUTH}/${fromModels.ERoutes.REGISTER}`;
   public readonly editorLink = `${fromModels.ERoutes.EDITOR}`;
   public readonly settingsLink = `${fromModels.ERoutes.SETTINGS}`;
-  public readonly profileLink = `${fromModels.ERoutes.PROFILE}/${this.user?.username}`;
+  public profileLink: string;
+
+  ngOnInit() {
+    this.profileLink = `${fromModels.ERoutes.PROFILE}/${this.user.username}`;
+  }
 }

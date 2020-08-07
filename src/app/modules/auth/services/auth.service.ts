@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import * as fromModels from 'src/app/models';
 import { Observable } from 'rxjs';
-import { ApiUrlGenerator } from 'src/app/utils/url-generator';
+import { ApiUrlGenerator } from 'src/app/utils';
 import { IAuthResponseData } from 'src/app/models/interfaces/auth-response-data';
 
 @Injectable({
