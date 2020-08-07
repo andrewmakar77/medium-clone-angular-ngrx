@@ -1,15 +1,15 @@
 <mat-spinner
-  diameter="60"
   *ngIf="isLoading$ | async; else feedRef"
+  diameter="60"
 ></mat-spinner>
 <ng-template #feedRef>
   <ng-container *ngIf="(feed$ | async)?.length; else emptyRef">
     <cdk-virtual-scroll-viewport itemSize="170">
       <mat-selection-list [multiple]="false">
         <mat-list-option
-          *cdkVirtualFor="let item of feed$ | async; trackBy: trackItem"
+          *cdkVirtualFor="let article of feed$ | async; trackBy: trackItem"
         >
-          <mc-feed-item [item]="item"></mc-feed-item>
+          <mc-feed-item [article]="article"></mc-feed-item>
         </mat-list-option>
       </mat-selection-list>
     </cdk-virtual-scroll-viewport>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { ApiUrlGenerator } from 'src/app/utils/url-generator';
+import { ApiUrlGenerator } from 'src/app/utils';
 import { IFeedResponseData } from 'src/app/models';
 
 @Injectable({

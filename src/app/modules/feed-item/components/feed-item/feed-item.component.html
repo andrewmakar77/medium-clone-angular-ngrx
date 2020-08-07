@@ -1,33 +1,35 @@
-<ng-container *ngIf="item">
+<ng-container *ngIf="article">
   <div class="feed-item-container">
     <div class="feed-item-block">
       <div class="feed-item-block-2">
         <img
           class="author-image"
           loading="lazy"
-          [src]="
-            item.author.image ||
-            'https://static.productionready.io/images/smiley-cyrus.jpg'
-          "
-          [alt]="item.author.username"
+          [src]="article.author.image || imageFallback"
+          [alt]="article.author.username"
+          (click)="onNavigateToProfile(article.author.username)"
         />
         <div class="feed-item-info">
-          <strong>{{ item.author.username }}</strong>
-          <div>{{ item.createdAt | date }}</div>
+          <strong (click)="onNavigateToProfile(article.author.username)">{{
+            article.author.username
+          }}</strong>
+          <div>{{ article.createdAt | date }}</div>
         </div>
       </div>
-      <button mat-raised-button>
-        <mat-icon [matBadge]="item.favoritesCount" matBadgeColor="warn">
-          favorite
-        </mat-icon>
-      </button>
+      <mc-favorite-button
+        [favorited]="article.favorited"
+        [favoritesCount]="article.favoritesCount"
+        (clickFavorite)="onFavorite(article)"
+      ></mc-favorite-button>
     </div>
-    <h1>{{ item.title }}</h1>
-    <p>{{ item.description }}</p>
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.description }}</p>
     <div class="feed-item-block-3">
-      <small>{{ 'FEED_ITEM.READ_MORE' | translate }}</small>
+      <small (click)="onReadMore(article.slug)">
+        {{ 'FEED_ITEM.READ_MORE' | translate }}
+      </small>
       <mat-chip-list>
-        <mat-chip *ngFor="let tag of item.tagList; trackBy: trackTag">
+        <mat-chip *ngFor="let tag of article.tagList; trackBy: trackTag">
           {{ tag }}
         </mat-chip>
       </mat-chip-list>
