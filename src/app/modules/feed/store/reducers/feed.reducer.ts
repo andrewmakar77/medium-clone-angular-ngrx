@@ -47,6 +47,47 @@ const reducer = createReducer(
       errorMessages: errors || {},
       data: [] as fromModels.IArticle[],
     })
+  ),
+  on(fromActions.updateArticleAction, (state: fromModels.IFeedState) => ({
+    ...state,
+    error: false,
+    errorMessages: {},
+  })),
+  on(
+    fromActions.updateArticleSuccessAction,
+    (state: fromModels.IFeedState, { article }: { article: IArticle }) => {
+      const articleIndex = state.data.findIndex(
+        (item: IArticle) => item.slug === article.slug
+      );
+
+      const updatedArticle = { ...state.data[articleIndex], ...article };
+
+      const updatedArticles = [
+        ...state.data.slice(0, articleIndex),
+        updatedArticle,
+        ...state.data.slice(articleIndex + 1),
+      ];
+      return {
+        ...state,
+        loaded: true,
+        loading: false,
+        error: false,
+        data: [...updatedArticles],
+      };
+    }
+  ),
+  on(
+    fromActions.updateArticleFailureAction,
+    (
+      state: fromModels.IFeedState,
+      { errors }: { errors: fromModels.IBackendErrorMap }
+    ) => ({
+      ...state,
+      loaded: false,
+      loading: false,
+      error: true,
+      errorMessages: errors || {},
+    })
   )
 );
 

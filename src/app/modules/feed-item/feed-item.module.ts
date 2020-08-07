@@ -4,10 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FeedItemComponent } from 'src/app/modules/feed-item/components/feed-item/feed-item.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
+import { FavoriteButtonModule } from 'src/app/modules/shared/modules/favorite-button/favorite-button.module';
 
 @NgModule({
   declarations: [FeedItemComponent],
@@ -15,10 +13,8 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     MatDividerModule,
     MatChipsModule,
-    MatBadgeModule,
-    MatIconModule,
-    MatButtonModule,
     TranslateModule.forChild(),
+    FavoriteButtonModule,
   ],
   exports: [FeedItemComponent],
 })

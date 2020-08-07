@@ -5,7 +5,8 @@ export enum ERoutes {
   LOGIN = 'login',
   EDITOR = 'editor',
   SETTINGS = 'settings',
-  PROFILE = 'profile/:user',
+  PROFILE = 'profile',
   GLOBAL_FEED = 'global-feed',
   MY_FEED = 'my-feed',
+  ARTICLE = 'article',
 }

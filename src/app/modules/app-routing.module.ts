@@ -14,6 +14,16 @@ const routes: Routes = [
     canActivate: [NonAuthGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: `${ERoutes.ARTICLE}/:id`,
+    loadChildren: () =>
+      import('./article/article.module').then((m) => m.ArticleModule),
+  },
+  {
+    path: `${ERoutes.PROFILE}/:user`,
+    loadChildren: () =>
+      import('./profile/profile.module').then((m) => m.ProfileModule),
+  },
 ];
 
 @NgModule({

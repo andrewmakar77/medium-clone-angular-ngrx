@@ -1,0 +1,9 @@
+<button
+  mat-raised-button
+  [color]="favorited ? 'primary' : ''"
+  (click)="clickFavorite.emit()"
+>
+  <mat-icon [matBadge]="favoritesCount" matBadgeColor="warn">
+    favorite
+  </mat-icon>
+</button>
