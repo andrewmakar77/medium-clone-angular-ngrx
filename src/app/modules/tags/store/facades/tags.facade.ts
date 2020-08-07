@@ -10,7 +10,7 @@ import * as fromSelectors from 'src/app/modules/tags/store/selectors/tags.select
   providedIn: 'root',
 })
 export class TagsFacade {
-  public tags$: Observable<any> = this.store.pipe(
+  public tags$: Observable<string[]> = this.store.pipe(
     select(fromSelectors.selectTags)
   );
   public isLoading$: Observable<boolean> = this.store.pipe(
